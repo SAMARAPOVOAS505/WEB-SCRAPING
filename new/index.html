@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca de Operadoras</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Busca de Operadoras</h1>
+        <input type="text" id="searchInput" placeholder="Pesquisar Operadora" oninput="searchOperadoras()">
+        <ul id="operadorasList"></ul>
+        <p id="noResults" class="no-results" style="display:none;">Nenhuma operadora encontrada.</p>
+    </div>
+
+    <script>
+        // Função para buscar operadoras da API
+        function searchOperadoras() {
+            const searchQuery = document.getElementById('searchInput').value;
+
+            fetch(`http://localhost:8080/api/operadoras/search?query=${searchQuery}`)
+                .then(response => response.json())
+                .then(data => {
+                    const operadorasList = document.getElementById('operadorasList');
+                    const noResults = document.getElementById('noResults');
+                    operadorasList.innerHTML = '';
+
+                    // Verificar se encontrou resultados
+                    if (data.length === 0) {
+                        noResults.style.display = 'block';
+                    } else {
+                        noResults.style.display = 'none';
+                        data.forEach(operadora => {
+                            const li = document.createElement('li');
+                            li.innerHTML = `
+                                <strong>${operadora.razao_social}</strong>
+                                <p>Registro ANS: ${operadora.registro_ans}</p>
+                                <p>Despesas: ${operadora.despesas_eventos_saude}</p>
+                            `;
+                            operadorasList.appendChild(li);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar operadoras:', error);
+                });
+        }
+    </script>
+
+</body>
+</html>
