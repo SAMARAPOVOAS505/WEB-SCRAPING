@@ -2,8 +2,25 @@ package com.samara.webScraping.Model;
 
 import lombok.Data;
 
-@Data
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+@Entity
+@Data  // Lombok gera automaticamente getters, setters, toString, equals e hashCode
 public class Operadora {
-    private String registroAns;
-    private String razaoSocial;
+
+    @Id
+    private Long id;
+    private String codigoOperadora;
+    private String nomeOperadora;
+    private String cnpj;
+    private String dataCadastro;
+    private String endereco;
+    private String cidade;
+    private String uf;
+    private String telefone;
+    private String email;
+
 }
