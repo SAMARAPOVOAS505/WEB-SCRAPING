@@ -80,12 +80,6 @@ Para rodar o projeto localmente, siga as etapas abaixo:
 
 ---
 
-## Agradecimentos
-
-Agradeço pela oportunidade de realizar este teste, que me permitiu adaptar minhas habilidades para novas tecnologias. Embora algumas linguagens e ferramentas fossem novas para mim, consegui integrar e utilizar as que estavam mais dentro do meu conhecimento, e estou bastante satisfeito com o aprendizado que obtive no processo.
-
----
-
 ## Licença
 
 Este projeto é de uso livre para fins educacionais e não comerciais. 
